@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  server:
+    build:
+      context: ./
+    command: yarn lerna run dev --stream --scope=@daisy/server
+    environment:
+      HOST: 0.0.0.0
+      PORT: 1337
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules/
+      - /usr/src/app/packages/common/node_modules/
+      - /usr/src/app/packages/common/lib/
+      - /usr/src/app/packages/server/node_modules/
+
+  client:
+    build:
+      context: ./
+    command: yarn lerna run dev --stream --scope=@daisy/client
+    environment:
+      SERVER_HOST: server
+      SERVER_PORT: 1337
+    depends_on:
+      - server
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules/
+      - /usr/src/app/packages/common/node_modules/
+      - /usr/src/app/packages/common/lib/
+      - /usr/src/app/packages/client/node_modules/

@@ -1,0 +1,13 @@
+{
+  "name": "@daisy/server",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --config nodemon.json"
+  },
+  "dependencies": {
+    "@daisy/common": "^1.0.0"
+  }
+}

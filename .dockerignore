@@ -1,0 +1,5 @@
+*
+!lerna.json
+!package.json
+!yarn.lock
+!packages/
